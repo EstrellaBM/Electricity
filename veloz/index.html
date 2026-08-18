@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eleceed Cards</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./blocks/main.css" />
+  </head>
+  <body>
+    <header>
+      <img src="./images/logo.jpg" alt="Logo" class="header_logo" />
+      <nav class="nav">
+        <ul class="nav_links">
+          <li class="nav_link">Iniciar sesión</li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+      <section class="top">
+        <div class="top_container">
+          <div>
+            <img src="./images/jiwoo.jpeg" alt="Jiwoo" class="top_image" />
+          </div>
+          <div class="top-left">
+            <h2 class="user_info_name">Jiwoo</h2>
+            <span class="user_info_description">Poder: Electricidad</span>
+            <br />
+            <button class="user_info_edit">Escoje un personaje</button>
+          </div>
+          <div class="top-middle"></div>
+          <div class="top-right">
+            <button class="btn_buscar_personaje">Agregar Personaje</button>
+            <button class="btn_eliminar_personaje">Eliminar personaje</button>
+          </div>
+        </div>
+
+        <div class="popup" id="popup_profile">
+          <div class="popup_container">
+            <div class="popup_tittle">Popup</div>
+            <button class="popup_close" id="popup_close_profile">X</button>
+            <div class="popup_content">
+              <form class="form" id="form_profile">
+                <label for="name">Nombre</label>
+                <input type="text" class="form_name" name="name" id="name" />
+                <label for="description">Poder</label>
+                <input
+                  type="text"
+                  class="form_description"
+                  name="description"
+                  id="description"
+                />
+                <button
+                  type="submit"
+                  class="form_button"
+                  id="form_button_player"
+                >
+                  Save
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="popup" id="popup_card">
+          <div class="popup_container">
+            <div class="popup_tittle">Agregar personaje</div>
+            <button class="popup_close" id="popup_close_card">X</button>
+            <div class="popup_content">
+              <form class="form" id="form_card">
+                <label for="card_name">Nombre</label>
+                <input
+                  type="text"
+                  class="form_card__input form_card_name"
+                  name="title"
+                  id="card_name"
+                  required
+                />
+                <label for="card_link">Imagen</label>
+                <input
+                  type="url"
+                  class="form_card__input form_card_link"
+                  name="link"
+                  id="card_link"
+                />
+                <label for="card_description">Descripción</label>
+                <input
+                  type="text"
+                  class="form_card__input form_card_description"
+                  name="description"
+                  id="card_description"
+                  required
+                />
+                <button type="submit" class="form_button" id="form_button_card">
+                  Guardar personaje
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cards">
+        <div class="card_container"></div>
+      </section>
+    </main>
+
+    <footer></footer>
+
+    <template id="card-template">
+      <div class="card">
+        <h2 class="card_title"></h2>
+        <div class="card_images_container">
+          <img class="card_image card_image--front" src="" alt="" />
+          <img class="card_image card_image--mirror" src="" alt="" />
+        </div>
+        <p class="card_description"></p>
+        <div class="card_buttons">
+          <button
+            type="button"
+            class="card_button card_button--like card_like_button"
+          >
+            Like
+          </button>
+          <button
+            type="button"
+            class="card_button card_button--dislike card_dislike_button"
+          >
+            Dislike
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <script type="module" src="./scripts/script.js" defer></script>
+  </body>
+</html>

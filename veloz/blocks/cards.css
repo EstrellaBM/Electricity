@@ -1,0 +1,112 @@
+.card_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #00f2fa;
+  padding: 16px 16px 0 16px; /* Sin padding en la parte inferior */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  perspective: 1000px;
+  overflow: hidden; /* Recorta los botones para respetar el border-radius de la tarjeta */
+}
+
+.card_title {
+  font-size: 1.2rem;
+  margin: 0;
+  font-family: sans-serif;
+  color: #000000;
+}
+
+.card_images_container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  cursor: pointer;
+  border-radius: 6px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.card.card--flipped .card_images_container {
+  transform: rotateY(180deg);
+}
+
+.card_image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  backface-visibility: hidden;
+}
+
+.card_image--front {
+  z-index: 2;
+}
+
+.card_image--mirror {
+  transform: rotateY(180deg);
+}
+
+.card_description {
+  font-size: 0.95rem;
+  color: #050505;
+  margin: 0;
+  font-family: sans-serif;
+  margin-bottom: 12px; /* Espacio antes de los botones */
+}
+
+/* Contenedor que abarca de extremo a extremo */
+.card_buttons {
+  display: flex;
+  width: calc(
+    100% + 32px
+  ); /* Expande el ancho compensando el padding de .card */
+  margin-left: -16px; /* Mueve hacia la izquierda para pegar al borde */
+  margin-top: auto; /* Empuja los botones hasta el fondo si la tarjeta crece */
+}
+
+/* Estilo base para ambos botones */
+.card_button {
+  flex: 1; /* Divide el espacio 50% / 50% exactamente */
+  border: none;
+  padding: 12px 0;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    opacity 0.2s ease;
+}
+
+/* Botón Azul (Like) */
+.card_button--like {
+  background-color: #003d80;
+}
+
+.card_button--like:hover {
+  background-color: #002b5c;
+}
+
+/* Botón Rojo (Dislike) */
+.card_button--dislike {
+  background-color: #d9534f;
+}
+
+.card_button--dislike:hover {
+  background-color: #c9302c;
+}

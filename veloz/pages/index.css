@@ -1,0 +1,13 @@
+@import url(../vendor/necolas-normalize.css-be14934/normalize.css);
+@import url(../blocks/header.css);
+@import url(../blocks/nav.css);
+@import url(../blocks/top.css);
+@import url(../blocks/popup.css);
+@import url(../blocks/form.css);
+@import url("../blocks/cards.css");
+body {
+  max-width: 1200px;
+  min-width: 320px;
+  margin: 0 auto;
+  background-color: rgb(250, 245, 245);
+}
