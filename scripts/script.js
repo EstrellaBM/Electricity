@@ -103,11 +103,24 @@ popupCloseCard.addEventListener("click", () => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  userInfoName.textContent = formName.value;
-  userInfoDescription.textContent = formDespcription.value;
 
-  console.log("kadfk");
-  popup.classList.toggle("popup_open");
+  const nameVal = formName.value.trim();
+  const descVal = formDespcription.value.trim();
+
+  if (nameVal === "") {
+    userInfoName.textContent = "Jiwoo";
+    userInfoDescription.textContent = "Poder: Electricidad";
+  } else {
+    userInfoName.textContent = nameVal;
+    if (descVal === "") {
+      userInfoDescription.textContent = "Poder: Electricidad";
+    } else {
+      userInfoDescription.textContent = descVal;
+    }
+  }
+
+  form.reset();
+  popup.classList.remove("popup_open");
 });
 
 formChar.addEventListener("submit", (e) => {

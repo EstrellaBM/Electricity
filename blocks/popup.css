@@ -1,14 +1,17 @@
+/* --- Estilos Base del Popup --- */
 .popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
-  min-height: 350px;
+  width: 90%;
+  max-width: 400px;
+  min-height: auto;
   background-color: rgba(20, 24, 38, 0.95);
   border: 2px solid #00d2ff;
   border-radius: 12px;
-  padding: 30px 24px;
+  /* Espacio superior de 50px para evitar que el título toque la 'X' */
+  padding: 50px 24px 24px 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
   display: none;
   z-index: 1000;
@@ -24,12 +27,15 @@
 
 .popup_container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
+/* --- Botón de Cierre (X) --- */
 .popup_close {
   position: absolute;
-  right: 16px;
-  top: 16px;
+  top: 14px;
+  right: 14px;
   background-color: #03d1ff;
   color: #141826;
   border: none;
@@ -42,9 +48,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+  z-index: 10;
 }
 
 .popup_close:hover {
   background-color: #ffffff;
+}
+
+.popup_close:active {
+  transform: scale(0.92);
+}
+
+/* --- Adaptación Responsiva para Móviles --- */
+@media screen and (max-width: 480px) {
+  .popup {
+    width: 92%;
+    padding: 48px 16px 20px 16px; /* Ajuste de padding en pantallas pequeñas */
+    border-radius: 10px;
+  }
+
+  .popup_close {
+    top: 10px;
+    right: 10px;
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
 }
