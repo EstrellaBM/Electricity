@@ -43,6 +43,14 @@ const data = [
   },
 ];
 
+const setInitialProfileValues = () => {
+  if (data.length > 0) {
+    const primeraTarjeta = data[0];
+    formName.value = primeraTarjeta.title;
+    formDespcription.value = primeraTarjeta.description;
+  }
+};
+
 const createCard = (personaje) => {
   const card = card_template.content.cloneNode(true);
   const cardElement = card.querySelector(".card");
@@ -81,7 +89,10 @@ data.forEach((personaje) => {
   createCard(personaje);
 });
 
+setInitialProfileValues();
+
 userInfoEdit.addEventListener("click", () => {
+  setInitialProfileValues();
   popup.classList.toggle("popup_open");
   console.log("ola");
 });
@@ -107,16 +118,24 @@ form.addEventListener("submit", (e) => {
   const nameVal = formName.value.trim();
   const descVal = formDespcription.value.trim();
 
+  let defaultName = "Jiwoo";
+  let defaultDesc = "Poder: Electricidad";
+
+  if (data.length > 0) {
+    defaultName = data[0].title;
+    defaultDesc = data[0].description;
+  }
+
   if (nameVal === "") {
-    userInfoName.textContent = "Jiwoo";
-    userInfoDescription.textContent = "Poder: Electricidad";
+    userInfoName.textContent = defaultName;
   } else {
     userInfoName.textContent = nameVal;
-    if (descVal === "") {
-      userInfoDescription.textContent = "Poder: Electricidad";
-    } else {
-      userInfoDescription.textContent = descVal;
-    }
+  }
+
+  if (descVal === "") {
+    userInfoDescription.textContent = defaultDesc;
+  } else {
+    userInfoDescription.textContent = descVal;
   }
 
   form.reset();

@@ -3,10 +3,16 @@ header {
   width: 100%;
   padding: 20px 20px 0px 20px;
   justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .header_logo {
   width: 48px;
   height: 48px;
   border-radius: 50%;
+}
+
+.header_login {
+  white-space: nowrap;
 }

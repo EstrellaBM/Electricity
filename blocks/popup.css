@@ -1,79 +1,164 @@
-/* --- Estilos Base del Popup --- */
 .popup {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-  max-width: 400px;
-  min-height: auto;
-  background-color: rgba(20, 24, 38, 0.95);
-  border: 2px solid #00d2ff;
-  border-radius: 12px;
-  /* Espacio superior de 50px para evitar que el título toque la 'X' */
-  padding: 50px 24px 24px 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: none;
+  justify-content: center;
+  align-items: center;
   z-index: 1000;
-  box-sizing: border-box;
-  color: #ffffff;
-  font-family: sans-serif;
+  overflow: hidden;
+}
+.popup.popup_open {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-.popup.popup_open {
-  display: flex;
-  flex-direction: column;
+.popup_background_video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Queda al fondo */
+}
+
+.popup_background_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(3, 7, 18, 0.55);
+  backdrop-filter: blur(2px);
+  z-index: 2;
 }
 
 .popup_container {
-  width: 100%;
+  position: relative;
+  z-index: 10;
+  width: 420px;
+  max-width: 90vw;
+  padding: 35px 30px;
+  box-sizing: border-box;
+
+  background: rgba(8, 18, 33, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 20px;
+  border: 1.5px solid rgba(0, 210, 255, 0.7);
+  box-shadow:
+    0 0 35px rgba(0, 210, 255, 0.5),
+    inset 0 0 15px rgba(0, 210, 255, 0.25);
+
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-/* --- Botón de Cierre (X) --- */
+.popup_tittle {
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 12px rgba(0, 210, 255, 0.9);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.form label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #00d2ff;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-align: left;
+}
+
+.form input[type="text"],
+.form input[type="url"],
+.form_name,
+.form_description,
+.form_card__input {
+  width: 100%;
+  padding: 11px 14px;
+  background: rgba(4, 10, 24, 0.75);
+  border: 1.5px solid rgba(0, 210, 255, 0.6);
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.form input:focus {
+  border-color: #ffffff;
+  background: rgba(4, 10, 24, 0.9);
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.8);
+}
+
+.form_button {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #00d2ff 0%, #0052d4 100%);
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 25px;
+  font-weight: 800;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+}
+
+.form_button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 210, 255, 0.8);
+}
+
 .popup_close {
   position: absolute;
-  top: 14px;
-  right: 14px;
-  background-color: #03d1ff;
-  color: #141826;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  background-color: #ffffff;
+  color: #0d1b2a;
   border: none;
-  width: 28px;
-  height: 28px;
   border-radius: 50%;
-  font-weight: bold;
   font-size: 14px;
+  font-weight: bold;
   cursor: pointer;
+  z-index: 20;
   display: flex;
-  align-items: center;
   justify-content: center;
-  transition:
-    background-color 0.2s ease,
-    transform 0.1s ease;
-  z-index: 10;
+  align-items: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .popup_close:hover {
-  background-color: #ffffff;
-}
-
-.popup_close:active {
-  transform: scale(0.92);
-}
-
-@media screen and (max-width: 480px) {
-  .popup {
-    width: 92%;
-    padding: 48px 16px 20px 16px;
-    border-radius: 10px;
-  }
-
-  .popup_close {
-    top: 10px;
-    right: 10px;
-    width: 26px;
-    height: 26px;
-    font-size: 12px;
-  }
+  transform: scale(1.1);
+  background-color: #00d2ff;
 }
